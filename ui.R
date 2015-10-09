@@ -1,19 +1,19 @@
 # library(shiny)
 # setwd("D:\\_GIT_\\Developing_Data_Products")
+# setwd("D:\\_MOOC_\\git\\Developing_Data_Products")
 # runApp()
 
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  headerPanel("test inputs"),
+  headerPanel("Portugues Students data"),
+  
   sidebarPanel(
-    textInput(inputId='in1', label='le premier'),
-    textInput(inputId='in2', label='le deuxieme')
+    h3('look at the histogram')
   ),
+  
   mainPanel(
-    h3('Illustrating outputs'),
-    h4('res 1 :'), verbatimTextOutput('out1'),
-    h4('res 2 :'), verbatimTextOutput('out2'),
-    h4('res 3 :'), verbatimTextOutput('out3')
+    h3('here  it is the age histogram'),
+    plotOutput('ageHist')
   )
 ))
