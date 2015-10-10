@@ -6,14 +6,31 @@
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  headerPanel("Portugues Students data"),
-  
-  sidebarPanel(
-    h3('look at the histogram')
-  ),
-  
-  mainPanel(
-    h3('here  it is the age histogram'),
-    plotOutput('ageHist')
-  )
+   headerPanel('Portugues Students data'),
+   sidebarPanel( width = 12,
+      selectInput("data", 
+                label = "Choose the students data",
+                choices = list("Portugues","Math"),
+                selected = "Portugues"
+      ),
+      p(""),p(""),p(""),
+      br("The data source :"),
+      a("UC Irvine Machine Learning Repository", href="https://archive.ics.uci.edu/ml/datasets/Student+Performance")
+      #download data source
+   ),
+   mainPanel(
+      tabsetPanel(
+         tabPanel( "Histograms", 
+                   textOutput("selected"), 
+                   plotOutput("ageHist")
+         ),
+         tabPanel( "Browse data", 
+                   textOutput("showed"),
+                   dataTableOutput(outputId="theDataSelected")
+         ),
+         tabPanel("Source ands data informations", includeHTML("./html/source.html")
+         )
+         
+      )
+   )
 ))
