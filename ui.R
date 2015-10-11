@@ -11,7 +11,7 @@ shinyUI(pageWithSidebar(
    headerPanel(HTML('Developing Data Products Project<h2>Eric VACHON<h3>October 2015')),
    sidebarPanel( #width = 12,
       selectInput("data", 
-                label = "Choose the students data",
+                label = "Choose the course data",
                 choices = list("Portugues","Math"),
                 selected = "Portugues"
       ),
