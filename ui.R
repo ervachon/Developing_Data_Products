@@ -54,12 +54,12 @@ shinyUI(pageWithSidebar(
                                )
               ),
               column(4, checkboxGroupInput("featuresSel2", 
-                                           label = h3("features"), 
-                                           choices = list("famsup" = 17,"paid" = 18,
-                                                          "activities" = 19,"nursery" = 20,"higher" = 21,"internet" = 22,
-                                                          "romantic" = 23,"famrel" = 24,"freetime" = 25,"goout" = 26,
-                                                          "Dalc" = 27,"Walc" = 28,"health" = 29,"absences" = 30,"G1" = 31,
-                                                          "G2" = 32), selected = c(17:32)
+                                            label = h3("features"), 
+                                            choices = list("famsup" = 17,"paid" = 18,
+                                                           "activities" = 19,"nursery" = 20,"higher" = 21,"internet" = 22,
+                                                           "romantic" = 23,"famrel" = 24,"freetime" = 25,"goout" = 26,
+                                                           "Dalc" = 27,"Walc" = 28,"health" = 29,"absences" = 30,"G1" = 31,
+                                                           "G2" = 32), selected = c(17:32)
               )
              )
             )
@@ -69,7 +69,7 @@ shinyUI(pageWithSidebar(
         tabPanel("Documentation"               , includeHTML("https://raw.githubusercontent.com/ervachon/Developing_Data_Products/gh-pages/html/documentation.html")),
         tabPanel("Source and data information" , includeHTML("https://raw.githubusercontent.com/ervachon/Developing_Data_Products/gh-pages/html/source.html")),
         tabPanel("Histograms"                  , textOutput("selected"), plotOutput("ageHist")),
-        tabPanel("Prediction"                  , h4("The formula is : "), textOutput("featSel"), plotOutput("pred")),
+        tabPanel("Prediction"                  , textOutput("selFormula"), textOutput("featSel"), plotOutput("pred")),
         tabPanel("Browse data"                 , textOutput("showed"), dataTableOutput(outputId="theDataSelected"))
         )
       )

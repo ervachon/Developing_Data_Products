@@ -6,7 +6,9 @@ library(caret)
 theURL <-"https://archive.ics.uci.edu/ml/datasets/Student+Performance"
   
 theFormula <- function(theSelected) {
-  return( "G3 ~ ." )
+  #f <- "G3 ~ ."
+  f <- returnFeaturesSelected(theSelected)
+  return( f )
 }
 
 loadCSV <- function(URL) {
@@ -32,11 +34,12 @@ theColors <- function(indice){
   return(col[as.integer(indice)])
 } 
 
-myPredict <- function(myData){
+myPredict <- function(myData,theSelectedFeatures){
+  set.seed(12345)
   inTrain           <- createDataPartition(y=myData$G3, p=.8, list = FALSE)
   ourTrain          <- myData[inTrain,]
   ourTest           <- myData[-inTrain,]
-  modelFit          <- train(as.formula(theFormula()), method = "glm",data=ourTrain)
+  modelFit          <- train(as.formula(theFormula(theSelectedFeatures)), method = "glm",data=ourTrain)
   testPred          <- predict(modelFit,ourTest)
   results           <- cbind(ourTest$G3,testPred)
   colnames(results) <- c("Reference", "Prediction")
@@ -86,8 +89,9 @@ shinyServer(
         
     myData <- reactive({SelectStudentData(input$data)})
     
-    output$selected        <- renderText({ paste("You have selected : ", input$data)})
-    output$showed          <- renderText({ paste("Data : ", input$data)})
+    output$selFormula      <- renderText({paste("The formula (", input$data,") is :")})
+    output$selected        <- renderText({paste("You have selected : ", input$data)})
+    output$showed          <- renderText({paste("Data : ", input$data)})
     output$theDataSelected <- renderDataTable({data <- myData()})
     output$ageHist         <- renderPlot(ggplot(myData(), aes(x=ageLevel,fill=sex))
                                             + geom_bar(binwidth=.5,position="dodge")
@@ -96,7 +100,13 @@ shinyServer(
                                             + scale_fill_manual(values=c( theColors(input$col1), theColors(input$col2)))
                                          )
     
-    myPred      <- reactive({myPredict(myData())})
+    myPred      <- reactive({myPredict(myData(),
+                                       if (input$updSelFeat==0)
+                                          {c(1:32)}
+                                       else
+                                          {isolate ({c(input$featuresSel1,input$featuresSel2)})}
+                                      )
+                            })
     output$pred <- renderPlot( ggplot(myPred(), aes(x = Reference, y = Prediction)) 
                                    + geom_point(color='blue')
                                    + geom_abline(intercept=0,slope=1,colour='red') 
