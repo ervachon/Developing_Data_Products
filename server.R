@@ -4,6 +4,10 @@ library(ggplot2)
 library(caret)
 
 theURL <-"https://archive.ics.uci.edu/ml/datasets/Student+Performance"
+  
+theFormula <- function(theSelected) {
+  return( "G3 ~ ." )
+}
 
 loadCSV <- function(URL) {
   csv <- tryCatch( {read.csv(text=getURL(URL,ssl.verifypeer=0L, followlocation=1L),sep=';')},
@@ -32,11 +36,48 @@ myPredict <- function(myData){
   inTrain           <- createDataPartition(y=myData$G3, p=.8, list = FALSE)
   ourTrain          <- myData[inTrain,]
   ourTest           <- myData[-inTrain,]
-  modelFit          <- train(ourTrain$G3 ~ ., method = "glm",data=ourTrain)
+  modelFit          <- train(as.formula(theFormula()), method = "glm",data=ourTrain)
   testPred          <- predict(modelFit,ourTest)
   results           <- cbind(ourTest$G3,testPred)
   colnames(results) <- c("Reference", "Prediction")
   return(as.data.frame(results))
+}
+
+returnFeaturesSelected <- function(theSelected) {
+  formula <- ""
+  if (1 %in% theSelected) { formula <- paste(formula," + " ,"school")}
+  if (3 %in% theSelected) { formula <- paste(formula," + " ,"age")}
+  if (4 %in% theSelected) { formula <- paste(formula," + " ,"address")}
+  if (5 %in% theSelected) { formula <- paste(formula," + " ,"famsize")}
+  if (6 %in% theSelected) { formula <- paste(formula," + " ,"Pstatus")}
+  if (7 %in% theSelected) { formula <- paste(formula," + " ,"Medu")}
+  if (8 %in% theSelected) { formula <- paste(formula," + " ,"Fedu")}
+  if (9 %in% theSelected) { formula <- paste(formula," + " ,"Mjob")}
+  if (10 %in% theSelected) { formula <- paste(formula," + " ,"Fjob")}
+  if (11 %in% theSelected) { formula <- paste(formula," + " ,"reason")}
+  if (12 %in% theSelected) { formula <- paste(formula," + " ,"guardian")}
+  if (13 %in% theSelected) { formula <- paste(formula," + " ,"traveltime")}
+  if (14 %in% theSelected) { formula <- paste(formula," + " ,"studytime")}
+  if (15 %in% theSelected) { formula <- paste(formula," + " ,"failures")}
+  if (16 %in% theSelected) { formula <- paste(formula," + " ,"schoolsup")}
+  if (17 %in% theSelected) { formula <- paste(formula," + " ,"famsup")}
+  if (18 %in% theSelected) { formula <- paste(formula," + " ,"paid")}
+  if (19 %in% theSelected) { formula <- paste(formula," + " ,"activities")}
+  if (20 %in% theSelected) { formula <- paste(formula," + " ,"nursery")}
+  if (21 %in% theSelected) { formula <- paste(formula," + " ,"higher")}
+  if (22 %in% theSelected) { formula <- paste(formula," + " ,"internet")}
+  if (23 %in% theSelected) { formula <- paste(formula," + " ,"romantic")}
+  if (24 %in% theSelected) { formula <- paste(formula," + " ,"famrel")}
+  if (25 %in% theSelected) { formula <- paste(formula," + " ,"freetime")}
+  if (26 %in% theSelected) { formula <- paste(formula," + " ,"goout")}
+  if (27 %in% theSelected) { formula <- paste(formula," + " ,"Dalc")}
+  if (28 %in% theSelected) { formula <- paste(formula," + " ,"Walc")}
+  if (29 %in% theSelected) { formula <- paste(formula," + " ,"health")}
+  if (30 %in% theSelected) { formula <- paste(formula," + " ,"absences")}
+  if (31 %in% theSelected) { formula <- paste(formula," + " ,"G1")}
+  if (32 %in% theSelected) { formula <- paste(formula," + " ,"G2")}
+  
+  return(paste("G3 ~ ",substring(formula,4)))
 }
 
 shinyServer(
@@ -55,11 +96,15 @@ shinyServer(
                                             + scale_fill_manual(values=c( theColors(input$col1), theColors(input$col2)))
                                          )
     
-    myPred       <- reactive({myPredict(myData())})
+    myPred      <- reactive({myPredict(myData())})
     output$pred <- renderPlot( ggplot(myPred(), aes(x = Reference, y = Prediction)) 
                                    + geom_point(color='blue')
                                    + geom_abline(intercept=0,slope=1,colour='red') 
                                    + geom_smooth(color = 'green')
                              )
+    output$featSel <- renderText({
+      input$updSelFeat
+      isolate({returnFeaturesSelected(c(input$featuresSel1,input$featuresSel2))})
+      })
   }
 )
