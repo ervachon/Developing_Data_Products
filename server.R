@@ -10,7 +10,6 @@ loadCSV <- function(URL) {
   return(csv)
 }
 
-
 SelectStudentData <- function(theData){
   
   if (theData == "Portugues") 
@@ -27,8 +26,7 @@ SelectStudentData <- function(theData){
   
 }
 
-getPage<-function() {return(includeHTML(theURL))}
-  
+
 shinyServer(
   function(input, output) {
     output$selected <- renderText({ paste("You have selected : ", input$data)})
@@ -38,11 +36,10 @@ shinyServer(
     
     output$theHTML         <- renderUI({getPage()})
     output$theDataSelected <- renderDataTable({data <- myData()})
-    output$ageHist         <- renderPlot(
-         ggplot(myData(), aes(x=ageLevel,fill=sex))
-              + geom_bar(binwidth=.5,position="dodge")
-              + facet_grid(school ~ . )
-              + xlab ("Age of the students")
+    output$ageHist         <- renderPlot(ggplot(myData(), aes(x=ageLevel,fill=sex))
+                                            + geom_bar(binwidth=.5,position="dodge")
+                                            + facet_grid(school ~ . )
+                                            + xlab ("Age of the students")
          )
 
   }
