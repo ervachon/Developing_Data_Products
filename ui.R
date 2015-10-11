@@ -2,6 +2,7 @@
 # setwd("D:\\_GIT_\\Developing_Data_Products")
 # setwd("D:\\_MOOC_\\git\\Developing_Data_Products")
 # runApp()
+# shinyapps::deployApp('D:\\_MOOC_\\git\\Developing_Data_Products')
 
 ########################library(rCharts)
 
@@ -66,8 +67,8 @@ shinyUI(pageWithSidebar(
     ))),
    mainPanel(#width = 12,
       tabsetPanel(
-        tabPanel("Documentation"               , includeHTML("https://raw.githubusercontent.com/ervachon/Developing_Data_Products/gh-pages/html/documentation.html")),
-        tabPanel("Source and data information" , includeHTML("https://raw.githubusercontent.com/ervachon/Developing_Data_Products/gh-pages/html/source.html")),
+        tabPanel("Documentation"               , includeHTML("./html/documentation.html")),
+        tabPanel("Source and data information" , includeHTML("./html/source.html")),
         tabPanel("Histograms"                  , textOutput("selected"), plotOutput("ageHist")),
         tabPanel("Prediction"                  , textOutput("selFormula"), textOutput("featSel"), plotOutput("pred")),
         tabPanel("Browse data"                 , textOutput("showed"), dataTableOutput(outputId="theDataSelected"))
