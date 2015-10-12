@@ -2,6 +2,7 @@ library(shiny)
 library(RCurl)
 library(ggplot2)
 library(caret)
+library(googleVis)
 
 theURL <-"https://archive.ics.uci.edu/ml/datasets/Student+Performance"
   
@@ -13,7 +14,7 @@ theFormula <- function(theSelected) {
 
 loadCSV <- function(URL) {
   csv <- tryCatch( {read.csv(text=getURL(URL,ssl.verifypeer=0L, followlocation=1L),sep=';')},
-                          error=function(cond) {return(read.csv(URL))})    
+                          error=function(cond) {return(read.csv(URL,sep=';'))})    
   return(csv)
 }
 
@@ -116,5 +117,11 @@ shinyServer(
       input$updSelFeat
       isolate({returnFeaturesSelected(c(input$featuresSel1,input$featuresSel2))})
       })
+    
+    dfUniv      <- reactive({data.frame(longLat=c("41.5608:-8.3968"),Tip=c("University of Minho, Guimaraes, Portugal"))})
+    output$univ <- renderGvis({gvisMap(df, "longLat" , "Tip", options=list(showTip=TRUE,showLine=TRUE, 
+                                                                           enableScrollWheel=TRUE,
+                                                                           mapType='normal', useMapTypeControl=TRUE,
+                                                                           zoomLevel=15,width=400, height=400))})
   }
 )

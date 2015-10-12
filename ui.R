@@ -67,11 +67,12 @@ shinyUI(pageWithSidebar(
     ))),
    mainPanel(#width = 12,
       tabsetPanel(
-        tabPanel("Documentation"               , includeHTML("./html/documentation.html")),
-        tabPanel("Source and data information" , includeHTML("./html/source.html")),
-        tabPanel("Histograms"                  , textOutput("selected"), plotOutput("ageHist")),
-        tabPanel("Prediction"                  , textOutput("selFormula"), textOutput("featSel"), plotOutput("pred")),
-        tabPanel("Browse data"                 , textOutput("showed"), dataTableOutput(outputId="theDataSelected"))
+        tabPanel("Documentation"              , includeHTML("./www/documentation.html")),
+        tabPanel("Histograms"                 , textOutput("selected"), plotOutput("ageHist")),
+        tabPanel("Prediction"                 , textOutput("selFormula"), textOutput("featSel"), plotOutput("pred")),
+        tabPanel("Browse data"                , textOutput("showed"), dataTableOutput(outputId="theDataSelected")),
+        tabPanel("Source and data information", includeHTML("./www/source.html")),
+        tabPanel("Map of the University"      , h5("University of Minho, Guimaraes, Portugal, (41.5608°N 8.3968°)"), htmlOutput("univ"))
         )
       )
    )
