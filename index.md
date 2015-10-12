@@ -2,38 +2,42 @@
 title       : Developing Data Products Project
 subtitle    : October 2015
 author      : Eric VACHON
-job         : 
-framework   : io2012    # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
-widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
+framework   : io2012   # {io2012, html5slides, shower, dzslides, deckjs...}
+widgets     : [bootstrap,quiz]   # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
+<!--
+library(slidify)
+setwd("D:\\_MOOC_\\git\\Developing_Data_Products")
+publish(title = 'Developing Data Products Project', 'index.html', host = 'rpubs') 
+-->
 
-## Slide 1
-
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+## Aim of the project
+hihihi
 
 --- .class #id 
 
-## Slide 2
+## Histogram screen
+![img](./www/screen.png)
+
+--- .class #id  
+
+## Prediction
+
 
 ```r
-require(ggplot2)
+ggplot(results, aes(x = Reference, y = Prediction)) + geom_point(color='blue') + 
+    geom_abline(intercept=0,slope=1,colour='red') + geom_smooth(color = 'green')
 ```
 
-```
-## Warning: package 'ggplot2' was built under R version 3.1.3
-```
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png) 
 
-```r
-qplot(wt, mpg, data = mtcars)
-```
+--- .class #id  
+## Links and ressources
 
-<img src="assets/fig/simple-plot-1.png" title="plot of chunk simple-plot" alt="plot of chunk simple-plot" style="display: block; margin: auto;" />
---- .class #id 
-
-
+[The Shiny App is here :-)](https://ervachon.shinyapps.io/Developing_Data_Products)  
+[The RPubs 5-slides is here :-)](http://rpubs.com/ervachon/117127)  
+[This HTML  5-slides is here :-)](http://ervachon.github.io/Developing_Data_Products/)  
+  
+ 
