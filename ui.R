@@ -1,15 +1,11 @@
-# library(shiny)
-# setwd("D:\\_GIT_\\Developing_Data_Products")
 # setwd("D:\\_MOOC_\\git\\Developing_Data_Products")
 # runApp()
 # shinyapps::deployApp('D:\\_MOOC_\\git\\Developing_Data_Products')
 
-########################library(rCharts)
-
 library(shiny)
 
 shinyUI(pageWithSidebar(
-   headerPanel(HTML('Developing Data Products Project<h2>Eric VACHON<h3>October 2015')),
+   headerPanel(HTML('Developing Data Products Project<h3>Eric VACHON - October 2015')),
    sidebarPanel( #width = 12,
     tabsetPanel(
       tabPanel("Common",
@@ -72,7 +68,7 @@ shinyUI(pageWithSidebar(
         tabPanel("Prediction"                 , textOutput("selFormula"), textOutput("featSel"), plotOutput("pred")),
         tabPanel("Browse data"                , textOutput("showed"), dataTableOutput(outputId="theDataSelected")),
         tabPanel("Source and data information", includeHTML("./www/source.html")),
-        tabPanel("Map of the University"      , h5("University of Minho, Guimaraes, Portugal, (41.5608°N 8.3968°)"), htmlOutput("univ"))
+        tabPanel("Map of the University"      , h4("University of Minho, GuimarÃ£es, Portugal, (41.5608Â°N 8.3968Â°W)"), htmlOutput("univ"))
         )
       )
    )

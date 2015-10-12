@@ -1,13 +1,12 @@
-library(shiny)
-library(RCurl)
-library(ggplot2)
-library(caret)
-library(googleVis)
+suppressPackageStartupMessages(library(shiny))
+suppressPackageStartupMessages(library(RCurl))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(caret))
+suppressPackageStartupMessages(library(googleVis))
 
 theURL <-"https://archive.ics.uci.edu/ml/datasets/Student+Performance"
   
 theFormula <- function(theSelected) {
-  #f <- "G3 ~ ."
   f <- returnFeaturesSelected(theSelected)
   return( f )
 }
@@ -118,8 +117,8 @@ shinyServer(
       isolate({returnFeaturesSelected(c(input$featuresSel1,input$featuresSel2))})
       })
     
-    dfUniv      <- reactive({data.frame(longLat=c("41.5608:-8.3968"),Tip=c("University of Minho, Guimaraes, Portugal"))})
-    output$univ <- renderGvis({gvisMap(df, "longLat" , "Tip", options=list(showTip=TRUE,showLine=TRUE, 
+    dfUniv      <- reactive({data.frame(longLat=c("41.5608:-8.3968"),Tip=c("University of Minho, Guimarães, Portugal"))})
+    output$univ <- renderGvis({gvisMap(dfUniv(), "longLat" , "Tip", options=list(showTip=TRUE,showLine=TRUE, 
                                                                            enableScrollWheel=TRUE,
                                                                            mapType='normal', useMapTypeControl=TRUE,
                                                                            zoomLevel=15,width=400, height=400))})
