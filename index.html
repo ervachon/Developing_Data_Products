@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
-	<title>Developing Data Products Project</title>
-	<meta name="description" content="Developing Data Products Project">
-	<meta name="author" content="Eric VACHON">
-	<meta name="generator" content="slidify" />
-	
-	<!-- LOAD STYLE SHEETS -->
-	<link rel="stylesheet" href="libraries/frameworks/html5slides/default/styles.css">
-	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />  <link rel="stylesheet" href = "libraries/widgets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href = "libraries/widgets/quiz/css/demo.css">
-<link rel="stylesheet" href = "assets/css/ribbons.css">
+  <title>Developing Data Products Project</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products Project">
+  <meta name="author" content="Eric VACHON">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
   
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
 </head>
-<body style='display: none'>
-	<section class='slides layout-regular template-regular'>
-     <article class="" id="slide-1" style="background:;">
-  <h3>NA</h3>
-  <!--
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/logo.jpg">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products Project</h1>
+    <h2>Part of the coursera Data Science Specialization</h2>
+    <p>Eric VACHON<br/>October 2015</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <!--
 library(slidify)
 setwd("D:\\_GIT_\\Developing_Data_Products")
 setwd("D:\\_MOOC_\\git\\Developing_Data_Products")
@@ -28,39 +58,53 @@ publish(title = 'Developing Data Products Project', 'index.html', host = 'rpubs'
 <h2>Aim of the project</h2>
 
 <p><br>
-The aim of this project is to use the <a href="http://www3.dsi.uminho.pt/pcortez/student.pd">portugues data students</a> to predict student performance in secondary education (high school).<br>
+The aim of <a href="https://ervachon.shinyapps.io/Developing_Data_Products">this project</a>   is to use the <a href="http://www3.dsi.uminho.pt/pcortez/student.pdf">portugues data students</a> to predict student performance in secondary education (high school).<br>
 <br>
 We developpe a <a href="https://ervachon.shinyapps.io/Developing_Data_Products">Shiny application</a> to help the data mining : select features and predict the grade.<br>
 <br>
-We also prupose tools to modify the color of the data histogram.<br>
+We also purpose tools to modify the color of the data histograms.<br>
 <br></p>
 
-</article>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<article class="class" id="id" style="background:;">
-  <h3>Prediction</h3>
-  <pre><code class="r">ggplot(results, aes(x = Reference, y = Prediction)) + geom_point(color=&#39;blue&#39;) + 
-    geom_abline(intercept=0,slope=1,colour=&#39;red&#39;) + geom_smooth(color = &#39;green&#39;)
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">ggplot(results, aes(x = Reference, y = Prediction)) + geom_point(color=&#39;blue&#39;) + 
+        geom_abline(intercept=0,slope=1,colour=&#39;red&#39;) + geom_smooth(color = &#39;green&#39;)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
 
-</article>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<article class="class" id="id" style="background:;">
-  <h3>Histogram screen</h3>
-  <p><img src="./www/screen.png" alt="img"></p>
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Histograms screen</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="./www/screen.png" alt="img"></p>
 
-</article>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<article class="class" id="id" style="background:;">
-  <h3>Links</h3>
-  <h3>My URL</h3>
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Links</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>My URL</h3>
 
 <ul>
 <li><a href="https://ervachon.shinyapps.io/Developing_Data_Products">My Shiny App is here</a><br></li>
-<li><a href="http://rpubs.com/ervachon/117127">My RPubs 5-slides is here</a><br></li>
-<li><a href="http://ervachon.github.io/Developing_Data_Products/">My Github</a><br>
+<li><a href="https://github.com/ervachon/Developing_Data_Products">My Github</a><br>
 <br></li>
 </ul>
 
@@ -69,39 +113,66 @@ We also prupose tools to modify the color of the data histogram.<br>
 <ul>
 <li>Data can be download <a href="https://archive.ics.uci.edu/ml/datasets/Student+Performance">UC Irvine Machine Learning Repository</a></li>
 <li>Data came from <a href="http://www3.dsi.uminho.pt/pcortez">Paulo Cortez, University of Minho, Guimarães, Portugal</a></li>
-<li>Relevant Papers <a href="http://www3.dsi.uminho.pt/pcortez/student.pd">P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.</a></li>
+<li>Relevant Papers <a href="http://www3.dsi.uminho.pt/pcortez/student.pdf">P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.</a></li>
 </ul>
 
-<!--
---- .class #id  
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-## test
-
-
-```r
-x <- runif(10)
-y <- 5 * x + 3 + rnorm(10)
-fit <- lm(y ~ x)
-summary(fit)
-```
--->
-
-</article>
-
-  </section>
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Prediction'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Histograms screen'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Links'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
 </body>
-  <!-- LOAD JAVASCRIPTS  -->
-	<script src='libraries/frameworks/html5slides/default/slides.js'></script>
-	<script>  
-	$(function (){ 
-	  $("#example").popover(); 
-	  $("[rel='tooltip']").tooltip(); 
-	});  
-	</script>  
-	
-	<!-- LOAD HIGHLIGHTER JS FILES -->
-	<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<!-- DONE LOADING HIGHLIGHTER JS FILES -->
-	 
-	</html>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

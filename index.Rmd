@@ -18,17 +18,17 @@ publish(title = 'Developing Data Products Project', 'index.html', host = 'rpubs'
 
 ## Aim of the project
 <br>
-The aim of this project is to use the [portugues data students](http://www3.dsi.uminho.pt/pcortez/student.pd) to predict student performance in secondary education (high school).  
+The aim of [this project](https://ervachon.shinyapps.io/Developing_Data_Products)   is to use the [portugues data students](http://www3.dsi.uminho.pt/pcortez/student.pdf) to predict student performance in secondary education (high school).  
 <br>
 We developpe a [Shiny application](https://ervachon.shinyapps.io/Developing_Data_Products) to help the data mining : select features and predict the grade.  
 <br>
-We also prupose tools to modify the color of the data histogram.  
+We also purpose tools to modify the color of the data histograms.  
 <br>
 
 --- .class #id 
 
 ## Prediction
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning=FALSE}
 set.seed(12345)
 suppressPackageStartupMessages(library(RCurl))
 suppressPackageStartupMessages(library(ggplot2))
@@ -51,13 +51,12 @@ results           <- as.data.frame(results)
 ```
 ```{r, message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
 ggplot(results, aes(x = Reference, y = Prediction)) + geom_point(color='blue') + 
-    geom_abline(intercept=0,slope=1,colour='red') + geom_smooth(color = 'green')
+        geom_abline(intercept=0,slope=1,colour='red') + geom_smooth(color = 'green')
 ```
-
 
 --- .class #id  
 
-## Histogram screen
+## Histograms screen
 ![img](./www/screen.png)
 
 --- .class #id  
@@ -66,24 +65,10 @@ ggplot(results, aes(x = Reference, y = Prediction)) + geom_point(color='blue') +
 
 ### My URL
 - [My Shiny App is here](https://ervachon.shinyapps.io/Developing_Data_Products)  
-- [My RPubs 5-slides is here](http://rpubs.com/ervachon/117127)  
-- [My Github](http://ervachon.github.io/Developing_Data_Products/)  
+- [My Github](https://github.com/ervachon/Developing_Data_Products)  
 <br>
 
 ### Source  
 - Data can be download [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Student+Performance)
 - Data came from [Paulo Cortez, University of Minho, Guimarães, Portugal](http://www3.dsi.uminho.pt/pcortez)
-- Relevant Papers [P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.](http://www3.dsi.uminho.pt/pcortez/student.pd)
-
-<!--
---- .class #id  
-
-## test
-
-```{r,eval = FALSE}
-x <- runif(10)
-y <- 5 * x + 3 + rnorm(10)
-fit <- lm(y ~ x)
-summary(fit)
-```
--->
+- Relevant Papers [P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.](http://www3.dsi.uminho.pt/pcortez/student.pdf)
