@@ -18,11 +18,11 @@ publish(title = 'Developing Data Products Project', 'index.html', host = 'rpubs'
 
 ## Aim of the project
 <br>
-The aim of [this project](https://ervachon.shinyapps.io/Developing_Data_Products)   is to use the [portugues data students](http://www3.dsi.uminho.pt/pcortez/student.pdf) to predict student performance in secondary education (high school).  
+The aim of [this project](https://ervachon.shinyapps.io/Developing_Data_Products) is to use the [data students](http://www3.dsi.uminho.pt/pcortez/student.pdf) to predict student performance in secondary education (high school).  
 <br>
-We developpe a [Shiny application](https://ervachon.shinyapps.io/Developing_Data_Products) to help the data mining : select features and predict the grade.  
+We developed a [Shiny application](https://ervachon.shinyapps.io/Developing_Data_Products) to help the data mining : select features and predict the grade.  
 <br>
-We also purpose tools to modify the color of the data histograms.  
+We also purpose tools to modify the color of histograms.  
 <br>
 
 --- .class #id 
