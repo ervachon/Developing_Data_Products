@@ -90,7 +90,7 @@ shinyServer(
         
     myData <- reactive({SelectStudentData(input$data)})
     
-    output$selFormula      <- renderText({paste("The formula (", input$data,") is :")})
+    output$selFormula      <- renderText({paste("The formula use in the generalized linear model (method='glm', Caret package) with the data ", input$data," is :")})
     output$selected        <- renderText({paste("You have selected : ", input$data)})
     output$showed          <- renderText({paste("Data : ", input$data)})
     output$theDataSelected <- renderDataTable({data <- myData()})
